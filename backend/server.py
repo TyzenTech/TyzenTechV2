@@ -2029,6 +2029,89 @@ async def get_stats():
         "topics_by_difficulty": difficulty_counts
     }
 
+@api_router.post("/ask", response_model=QuestionResponse)
+async def ask_question(request: QuestionRequest):
+    """AI-powered Q&A system for psychology topics"""
+    try:
+        # Get topic context if topic_id is provided
+        topic_context = ""
+        topic_title = None
+        
+        if request.topic_id:
+            topic = await db.psychology_topics.find_one({"id": request.topic_id})
+            if topic:
+                topic_title = topic["title"]
+                topic_context = f"""
+Topic: {topic['title']}
+Category: {topic['category']}
+Difficulty: {topic['difficulty_level']}
+Key Concepts: {', '.join(topic.get('key_concepts', []))}
+Content: {topic['content'][:1500]}...
+
+Related Topics: {', '.join(topic.get('related_topics', []))}
+Key Psychologists: {', '.join(topic.get('psychologists', []))}
+"""
+        
+        # Create system message for the AI
+        system_message = f"""You are PsychLearn AI, an expert psychology tutor and teaching assistant. You help students understand psychology concepts, theories, and research.
+
+Instructions:
+- Provide clear, accurate, and educational responses about psychology topics
+- Use appropriate academic language while being accessible to students
+- Include relevant examples and applications when helpful
+- If asked about topics outside psychology, politely redirect to psychology-related questions
+- Always be encouraging and supportive in your teaching approach
+
+{f"Current Topic Context: {topic_context}" if topic_context else "General Psychology Q&A"}
+
+Remember: You are here to help students learn psychology effectively."""
+
+        # Initialize the Gemini chat
+        chat = LlmChat(
+            api_key=os.environ.get('EMERGENT_LLM_KEY'),
+            session_id=request.session_id,
+            system_message=system_message
+        ).with_model("gemini", "gemini-2.0-flash").with_max_tokens(1000)
+        
+        # Create user message
+        user_message = UserMessage(text=request.question)
+        
+        # Get AI response
+        ai_response = await chat.send_message(user_message)
+        
+        # Store the conversation in database
+        chat_message = ChatMessage(
+            session_id=request.session_id,
+            topic_id=request.topic_id,
+            question=request.question,
+            answer=ai_response,
+        )
+        
+        await db.chat_messages.insert_one(chat_message.dict())
+        
+        return QuestionResponse(
+            answer=ai_response,
+            session_id=request.session_id,
+            topic_title=topic_title
+        )
+        
+    except Exception as e:
+        logger.error(f"Error in ask_question: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to process question")
+
+@api_router.get("/chat-history/{session_id}")
+async def get_chat_history(session_id: str):
+    """Get chat history for a session"""
+    try:
+        messages = await db.chat_messages.find(
+            {"session_id": session_id}
+        ).sort("created_at", 1).to_list(100)
+        
+        return {"messages": [ChatMessage(**msg) for msg in messages]}
+    except Exception as e:
+        logger.error(f"Error getting chat history: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to get chat history")
+
 # Include the router in the main app
 app.include_router(api_router)
 
