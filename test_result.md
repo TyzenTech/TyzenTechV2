@@ -196,6 +196,18 @@ backend:
         comment: "TESTED: AI Q&A system fully functional. POST /api/ask works with both general psychology questions and topic-specific questions using topic_id. Gemini API integration working correctly after fixing API key configuration (changed from EMERGENT_LLM_KEY to GEMINI_API_KEY). Chat history retrieval via GET /api/chat-history/{session_id} works properly. Session management and conversation storage in MongoDB working. Error handling appropriate for invalid inputs. All 6 AI Q&A test cases passing."
 
 frontend:
+  - task: "AI Chat Interface Integration"
+    implemented: true
+    working: false
+    file: "/app/frontend/src/App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Added AI chat interface to topic detail pages with floating chat button, chat window, message history display, and integration with backend /api/ask endpoint. Includes session management and proper error handling."
+
   - task: "Psychology Learning Platform UI Design"
     implemented: true
     working: true
