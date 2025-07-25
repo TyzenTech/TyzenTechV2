@@ -519,6 +519,18 @@ class PsychLearnTester:
         # Test environment setup
         self.test_environment_variables()
         
+        # Test AI Q&A functionality
+        print("\n" + "=" * 40)
+        print("Testing AI Q&A Functionality")
+        print("=" * 40)
+        
+        self.test_ai_qa_general_question()
+        self.test_ai_qa_topic_specific_question(topics)
+        self.test_chat_history_retrieval()
+        self.test_ai_qa_error_handling()
+        self.test_ai_qa_invalid_topic_id()
+        self.test_chat_history_nonexistent_session()
+        
         return self.get_summary()
     
     def get_summary(self):
