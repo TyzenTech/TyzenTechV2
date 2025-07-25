@@ -105,6 +105,21 @@
 user_problem_statement: "Create a comprehensive psychology learning platform called PsychLearn with 150+ high-quality topics, advanced search, professional academic design, and integration with PubMed API, OSF API, and Gemini API for AI-powered features."
 
 backend:
+  - task: "AI Q&A System with Gemini Integration"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Implemented AI Q&A system using Gemini 2.0 Flash model via emergentintegrations library. Added POST /api/ask endpoint for AI-powered psychology Q&A and GET /api/chat-history endpoint for conversation history. System provides context-aware responses using topic content when topic_id is provided."
+      - working: true
+        agent: "testing"
+        comment: "TESTED: All AI Q&A functionality working perfectly. Fixed critical API key configuration and installed missing litellm dependency. All 17 backend tests passing including 6 comprehensive AI Q&A tests. POST /api/ask works with both general psychology questions and topic-specific questions. GET /api/chat-history retrieves conversation history correctly. Session management and MongoDB storage working properly. Error handling appropriate for invalid inputs. AI provides relevant, educational psychology responses."
+
   - task: "Psychology Topics Database and API Endpoints"
     implemented: true
     working: true
