@@ -75,8 +75,9 @@ class UserProgress(BaseModel):
     progress_percentage: int = 0
     last_accessed: datetime = Field(default_factory=datetime.utcnow)
 
-# Sample psychology topics data
+# Sample psychology topics data - Comprehensive database across all psychology fields
 sample_topics = [
+    # BEHAVIORAL PSYCHOLOGY
     {
         "title": "Classical Conditioning",
         "category": "Behavioral Psychology",
@@ -140,6 +141,100 @@ Classical conditioning remains a cornerstone of learning theory and continues to
         "psychologists": ["Ivan Pavlov", "John Watson"],
         "experiments": ["Pavlov's Dogs", "Little Albert Experiment"]
     },
+    {
+        "title": "Operant Conditioning",
+        "category": "Behavioral Psychology",
+        "subcategory": "Learning Theories",
+        "content": """
+# Operant Conditioning
+
+Operant conditioning, developed by B.F. Skinner, is a learning process where behavior is controlled by consequences. Unlike classical conditioning, which focuses on involuntary responses, operant conditioning deals with voluntary behaviors and their outcomes.
+
+## Core Principles
+
+### Reinforcement
+Reinforcement increases the likelihood of a behavior occurring again. There are two types:
+
+**Positive Reinforcement**: Adding something desirable after a behavior
+- Example: Giving praise for good performance
+- Increases behavior frequency
+
+**Negative Reinforcement**: Removing something unpleasant after a behavior
+- Example: Taking aspirin to eliminate a headache
+- Also increases behavior frequency
+
+### Punishment
+Punishment decreases the likelihood of a behavior occurring again. There are two types:
+
+**Positive Punishment**: Adding something unpleasant after a behavior
+- Example: Giving extra chores for misbehavior
+- Decreases behavior frequency
+
+**Negative Punishment**: Removing something desirable after a behavior
+- Example: Taking away TV privileges
+- Decreases behavior frequency
+
+## Schedules of Reinforcement
+
+### Continuous Reinforcement
+Every occurrence of the behavior is reinforced. Leads to rapid learning but quick extinction.
+
+### Partial Reinforcement
+Only some occurrences are reinforced. More resistant to extinction.
+
+**Fixed Ratio (FR)**: Reinforcement after a fixed number of responses
+**Variable Ratio (VR)**: Reinforcement after varying numbers of responses
+**Fixed Interval (FI)**: Reinforcement after a fixed time period
+**Variable Interval (VI)**: Reinforcement after varying time periods
+
+## Applications
+
+### Education
+- Token economies in classrooms
+- Immediate feedback systems
+- Gradual skill building
+
+### Therapy
+- Behavior modification programs
+- Treatment of phobias and addictions
+- Autism intervention strategies
+
+### Animal Training
+- Pet obedience training
+- Wildlife management
+- Service animal preparation
+
+## Limitations and Criticisms
+
+### Ethical Concerns
+- Use of punishment in behavior modification
+- Questions about human dignity and autonomy
+- Over-reliance on external rewards
+
+### Cognitive Factors
+- Doesn't account for mental processes
+- Limited explanation of complex human behavior
+- Ignores intrinsic motivation
+
+## Modern Applications
+
+Operant conditioning principles continue to influence:
+- **Gamification**: Using reward systems in apps and games
+- **Workplace Management**: Employee recognition programs
+- **Digital Learning**: Adaptive learning platforms
+- **Healthcare**: Adherence to treatment protocols
+
+Understanding operant conditioning helps explain how consequences shape behavior and provides practical tools for behavior change in various settings.
+        """,
+        "difficulty_level": "introductory",
+        "reading_time": 12,
+        "key_concepts": ["reinforcement", "punishment", "schedules", "shaping", "extinction"],
+        "related_topics": ["Classical Conditioning", "Behavior Modification", "Learning Theory"],
+        "psychologists": ["B.F. Skinner", "Edward Thorndike"],
+        "experiments": ["Skinner Box", "Law of Effect"]
+    },
+    
+    # COGNITIVE PSYCHOLOGY
     {
         "title": "Cognitive Load Theory",
         "category": "Cognitive Psychology",
@@ -212,6 +307,126 @@ Understanding Cognitive Load Theory helps educators and instructional designers 
         "psychologists": ["John Sweller", "Richard Mayer", "George Miller"],
         "experiments": ["Dual-task paradigm", "Split-attention studies"]
     },
+    {
+        "title": "Working Memory",
+        "category": "Cognitive Psychology",
+        "subcategory": "Memory Systems",
+        "content": """
+# Working Memory
+
+Working memory is a cognitive system responsible for temporarily holding and manipulating information during complex cognitive tasks. Unlike short-term memory, which simply stores information, working memory actively processes and transforms data.
+
+## Baddeley's Model of Working Memory
+
+### Central Executive
+The central executive is the supervisory component that:
+- Controls attention and coordinates information
+- Manages the flow of information between subsystems
+- Switches between tasks and strategies
+- Has limited capacity and is effortful to use
+
+### Phonological Loop
+The phonological loop processes verbal and acoustic information:
+- **Phonological Store**: Holds speech-based information for 1-2 seconds
+- **Articulatory Control Process**: Refreshes information through subvocal rehearsal
+- Explains why we can remember phone numbers by repeating them
+
+### Visuospatial Sketchpad
+The visuospatial sketchpad handles visual and spatial information:
+- Processes images, colors, shapes, and spatial relationships
+- Allows mental rotation and navigation
+- Important for tasks like following directions or solving puzzles
+
+### Episodic Buffer
+Added later to the model, the episodic buffer:
+- Integrates information from different sources
+- Links working memory to long-term memory
+- Creates coherent episodes from fragmented information
+
+## Capacity Limitations
+
+### Miller's Magic Number
+George Miller proposed that working memory can hold 7±2 items, but modern research suggests:
+- The actual capacity is closer to 4±1 chunks
+- Capacity varies with the type of information
+- Individual differences exist in working memory span
+
+### Duration Limitations
+Information in working memory typically lasts:
+- 15-30 seconds without rehearsal
+- Can be extended through active maintenance
+- Decays rapidly unless refreshed
+
+## Functions of Working Memory
+
+### Complex Cognitive Tasks
+Working memory is crucial for:
+- Reading comprehension
+- Mathematical problem-solving
+- Reasoning and decision-making
+- Language comprehension and production
+
+### Learning and Education
+Working memory capacity predicts:
+- Academic achievement
+- Learning difficulties
+- Response to educational interventions
+- Ability to follow instructions
+
+## Individual Differences
+
+### Working Memory Span
+People vary in their working memory capacity:
+- High-span individuals perform better on complex tasks
+- Low-span individuals may struggle with multitasking
+- Capacity can be measured through various span tasks
+
+### Age-Related Changes
+Working memory shows developmental patterns:
+- Increases during childhood and adolescence
+- Peaks in early adulthood
+- Gradually declines with aging
+
+## Clinical Implications
+
+### ADHD
+Individuals with ADHD often show:
+- Reduced working memory capacity
+- Difficulties with central executive functions
+- Problems with task switching and inhibition
+
+### Learning Disabilities
+Working memory deficits are associated with:
+- Dyslexia and reading difficulties
+- Mathematical learning disabilities
+- Language processing disorders
+
+## Enhancement and Training
+
+### Working Memory Training
+Research on improving working memory includes:
+- Computerized training programs
+- Mixed evidence for transfer to other tasks
+- Debate about the effectiveness of training
+
+### Strategies for Support
+Practical approaches to support working memory:
+- Breaking complex tasks into smaller steps
+- Using external memory aids
+- Reducing cognitive load
+- Providing clear instructions
+
+Working memory is fundamental to human cognition and plays a crucial role in learning, problem-solving, and daily functioning. Understanding its mechanisms and limitations helps in education, therapy, and cognitive enhancement efforts.
+        """,
+        "difficulty_level": "intermediate",
+        "reading_time": 15,
+        "key_concepts": ["central executive", "phonological loop", "visuospatial sketchpad", "episodic buffer", "capacity limitations"],
+        "related_topics": ["Cognitive Load Theory", "Short-term Memory", "Executive Functions"],
+        "psychologists": ["Alan Baddeley", "Graham Hitch", "George Miller"],
+        "experiments": ["Working Memory Span Tasks", "Dual-task Studies"]
+    },
+    
+    # DEVELOPMENTAL PSYCHOLOGY
     {
         "title": "Attachment Theory",
         "category": "Developmental Psychology",
@@ -352,6 +567,172 @@ Attachment theory continues to be one of the most influential frameworks for und
         "psychologists": ["John Bowlby", "Mary Ainsworth", "Harry Harlow"],
         "experiments": ["Strange Situation", "Harlow's Monkey Studies"]
     },
+    {
+        "title": "Piaget's Cognitive Development Theory",
+        "category": "Developmental Psychology",
+        "subcategory": "Cognitive Development",
+        "content": """
+# Piaget's Cognitive Development Theory
+
+Jean Piaget's theory of cognitive development describes how children's thinking develops through distinct stages. His work revolutionized our understanding of child development and continues to influence education and developmental psychology.
+
+## Core Concepts
+
+### Schemas
+Mental structures that organize knowledge and guide thinking:
+- **Definition**: Organized patterns of thought or behavior
+- **Function**: Help interpret and understand experiences
+- **Development**: Become more complex and sophisticated over time
+
+### Adaptation Processes
+
+**Assimilation**: Incorporating new information into existing schemas
+- Example: A child calls all four-legged animals "dogs"
+- Uses current understanding to interpret new experiences
+
+**Accommodation**: Changing schemas to fit new information
+- Example: Learning that cats are different from dogs
+- Requires modifying existing mental structures
+
+**Equilibration**: Balancing assimilation and accommodation
+- Drives cognitive development forward
+- Creates cognitive conflict that motivates learning
+
+## The Four Stages
+
+### Sensorimotor Stage (Birth to 2 years)
+
+**Key Characteristics:**
+- Learning through sensory experiences and motor actions
+- Development of object permanence
+- Beginning of symbolic thought
+
+**Major Achievements:**
+- **Object Permanence**: Understanding that objects exist even when not visible
+- **Cause and Effect**: Learning that actions have consequences
+- **Symbolic Representation**: Beginning to use symbols and language
+
+**Substages:**
+1. Reflexive actions (0-1 month)
+2. Primary circular reactions (1-4 months)
+3. Secondary circular reactions (4-8 months)
+4. Coordination of reactions (8-12 months)
+5. Tertiary circular reactions (12-18 months)
+6. Mental representation (18-24 months)
+
+### Preoperational Stage (2 to 7 years)
+
+**Key Characteristics:**
+- Rapid language development
+- Symbolic thinking emerges
+- Egocentric perspective dominates
+
+**Limitations:**
+- **Egocentrism**: Difficulty seeing other perspectives
+- **Centration**: Focusing on one aspect while ignoring others
+- **Irreversibility**: Cannot mentally reverse operations
+- **Animism**: Attributing life to inanimate objects
+
+**Conservation Tasks:**
+Children at this stage fail conservation tasks:
+- Number: Don't understand that quantity remains constant
+- Volume: Think taller containers hold more liquid
+- Mass: Believe shape changes affect amount
+
+### Concrete Operational Stage (7 to 11 years)
+
+**Key Characteristics:**
+- Logical thinking about concrete objects and situations
+- Understanding of conservation
+- Ability to classify and seriate
+
+**New Abilities:**
+- **Conservation**: Quantity remains constant despite changes in appearance
+- **Reversibility**: Can mentally reverse operations
+- **Classification**: Ability to group objects by shared characteristics
+- **Seriation**: Arranging objects in logical order
+
+**Limitations:**
+- Thinking is still tied to concrete, observable phenomena
+- Difficulty with abstract or hypothetical concepts
+- Limited ability to think about thinking (metacognition)
+
+### Formal Operational Stage (11+ years)
+
+**Key Characteristics:**
+- Abstract and hypothetical thinking
+- Scientific reasoning
+- Systematic problem-solving
+
+**New Abilities:**
+- **Hypothetical-Deductive Reasoning**: Can generate and test hypotheses
+- **Abstract Thinking**: Can think about concepts not tied to concrete objects
+- **Metacognition**: Thinking about thinking processes
+- **Idealistic Thinking**: Can imagine perfect worlds and solutions
+
+**Applications:**
+- Mathematical reasoning
+- Scientific method
+- Moral reasoning
+- Future planning
+
+## Educational Implications
+
+### Constructivist Learning
+- Students actively construct knowledge
+- Learning builds on prior knowledge
+- Discovery learning is emphasized
+
+### Developmental Readiness
+- Instruction should match cognitive stage
+- Cannot rush development through stages
+- Provide appropriate challenges
+
+### Active Learning
+- Hands-on experiences promote understanding
+- Encourage exploration and experimentation
+- Social interaction enhances learning
+
+## Criticisms and Limitations
+
+### Cultural Considerations
+- Theory based primarily on Western, middle-class children
+- Some cultures may emphasize different cognitive skills
+- Social and cultural factors influence development
+
+### Individual Differences
+- Not all children progress through stages at same rate
+- Some may show capabilities across multiple stages
+- Individual variation in cognitive abilities
+
+### Modern Research Findings
+- Infants may be more competent than Piaget suggested
+- Development may be more gradual than stage-like
+- Domain-specific development rather than general stages
+
+## Legacy and Modern Applications
+
+### Education
+- Constructivist teaching methods
+- Age-appropriate curriculum design
+- Emphasis on active learning
+
+### Child Development
+- Understanding of cognitive milestones
+- Assessment of developmental delays
+— Parenting and childcare practices
+
+Piaget's theory remains influential in understanding how children's thinking develops, despite some limitations. His emphasis on active construction of knowledge and developmental stages continues to inform educational practices and developmental research.
+        """,
+        "difficulty_level": "intermediate",
+        "reading_time": 18,
+        "key_concepts": ["schemas", "assimilation", "accommodation", "conservation", "egocentrism"],
+        "related_topics": ["Child Development", "Educational Psychology", "Constructivism"],
+        "psychologists": ["Jean Piaget", "Lev Vygotsky"],
+        "experiments": ["Conservation Tasks", "Three Mountains Task"]
+    },
+    
+    # SOCIAL PSYCHOLOGY
     {
         "title": "Social Identity Theory",
         "category": "Social Psychology",
@@ -521,6 +902,202 @@ Social Identity Theory continues to be relevant in our increasingly diverse and 
         "psychologists": ["Henri Tajfel", "John Turner", "Gordon Allport"],
         "experiments": ["Minimal Group Paradigm", "Robbers Cave Study"]
     },
+    {
+        "title": "Attribution Theory",
+        "category": "Social Psychology",
+        "subcategory": "Social Cognition",
+        "content": """
+# Attribution Theory
+
+Attribution theory examines how people explain the causes of behavior and events. Developed by Fritz Heider and expanded by others, this theory helps us understand how we make sense of our social world and the consequences of our explanations.
+
+## Types of Attributions
+
+### Internal vs. External Attributions
+
+**Internal (Dispositional) Attributions**
+- Explain behavior in terms of personal characteristics
+- Focus on personality traits, abilities, or attitudes
+- Example: "She succeeded because she's smart"
+
+**External (Situational) Attributions**
+- Explain behavior in terms of environmental factors
+- Focus on circumstances, social pressures, or luck
+- Example: "She succeeded because the test was easy"
+
+### Stable vs. Unstable Attributions
+
+**Stable Attributions**
+- Causes that are relatively permanent
+- Examples: Ability, personality traits
+- Lead to expectations of consistency
+
+**Unstable Attributions**
+- Causes that can change over time
+- Examples: Effort, mood, luck
+- Allow for future change
+
+### Controllable vs. Uncontrollable Attributions
+
+**Controllable Attributions**
+- Factors that can be influenced by the person
+- Examples: Effort, strategy, preparation
+- Lead to responsibility and accountability
+
+**Uncontrollable Attributions**
+- Factors beyond personal control
+- Examples: Ability, task difficulty, luck
+- Reduce personal responsibility
+
+## Attribution Theories and Models
+
+### Heider's Naive Psychology
+Fritz Heider proposed that people are "naive scientists" who:
+- Seek to understand cause-and-effect relationships
+- Want to predict and control their environment
+- Use common-sense psychology to explain behavior
+
+### Jones and Davis's Correspondent Inference Theory
+Explains how we infer personality traits from behavior:
+- **Correspondent Inference**: Behavior reflects underlying dispositions
+- **Non-common Effects**: Focus on unique outcomes of chosen actions
+- **Social Desirability**: Unexpected behaviors are more informative
+- **Choice**: Freely chosen behaviors are more telling
+
+### Kelley's Covariation Model
+Uses three types of information to determine attributions:
+
+**Consensus**: How others behave in the same situation
+- High consensus = External attribution
+- Low consensus = Internal attribution
+
+**Distinctiveness**: How the person behaves in other situations
+- High distinctiveness = External attribution
+- Low distinctiveness = Internal attribution
+
+**Consistency**: How the person behaves over time
+- High consistency = Stable attribution
+- Low consistency = Unstable attribution
+
+### Weiner's Attribution Theory
+Focuses on achievement contexts with three dimensions:
+- **Locus**: Internal vs. External
+- **Stability**: Stable vs. Unstable
+- **Controllability**: Controllable vs. Uncontrollable
+
+## Attribution Biases and Errors
+
+### Fundamental Attribution Error
+The tendency to:
+- Overestimate internal factors when explaining others' behavior
+- Underestimate situational influences
+- Example: Assuming someone is late because they're irresponsible, ignoring traffic
+
+### Actor-Observer Bias
+Different attribution patterns for self vs. others:
+- **Actor**: Explains own behavior with situational factors
+- **Observer**: Explains others' behavior with dispositional factors
+- Related to differences in information and perspective
+
+### Self-Serving Bias
+Tendency to make attributions that maintain positive self-image:
+- Attribute successes to internal factors
+- Attribute failures to external factors
+- Protects self-esteem but can hinder learning
+
+### Hostile Attribution Bias
+Tendency to interpret ambiguous actions as hostile:
+- Common in aggressive individuals
+- Leads to defensive or retaliatory responses
+- Can escalate conflicts unnecessarily
+
+## Cultural Differences in Attribution
+
+### Individualistic vs. Collectivistic Cultures
+
+**Individualistic Cultures** (e.g., US, Western Europe):
+- Emphasize personal responsibility
+- More likely to make dispositional attributions
+- Focus on individual traits and achievements
+
+**Collectivistic Cultures** (e.g., East Asia, Latin America):
+- Emphasize social context and relationships
+- More likely to make situational attributions
+- Focus on group harmony and social roles
+
+### Research Findings
+- East Asians show less fundamental attribution error
+- Cultural differences in self-serving bias
+- Different emphasis on effort vs. ability attributions
+
+## Applications and Implications
+
+### Education
+**Academic Achievement**:
+- Attributing failure to lack of effort (controllable) vs. lack of ability (uncontrollable)
+- Growth mindset vs. fixed mindset
+- Impact on motivation and persistence
+
+**Teacher Expectations**:
+- How teachers explain student performance
+- Self-fulfilling prophecies
+- Implications for educational equity
+
+### Mental Health
+
+**Depression and Attribution Styles**:
+- Depressive attribution style: Internal, stable, global attributions for negative events
+- Learned helplessness theory
+- Cognitive therapy addresses maladaptive attributions
+
+**Relationship Satisfaction**:
+- Happy couples make positive attributions for partner's behavior
+- Distressed couples show negative attribution patterns
+- Therapeutic interventions target attribution patterns
+
+### Workplace and Organizations
+
+**Performance Evaluation**:
+- Manager attributions affect employee ratings
+- Impact on promotion and development decisions
+- Bias in performance feedback
+
+**Team Dynamics**:
+- Attribution patterns affect group cohesion
+- Blame vs. problem-solving orientations
+- Leadership and accountability
+
+## Interventions and Training
+
+### Attribution Retraining
+Programs designed to change maladaptive attribution patterns:
+- Focus on effort and strategy attributions
+- Reduce helplessness and improve performance
+- Applications in education and therapy
+
+### Perspective-Taking
+Encouraging consideration of alternative explanations:
+- Reduces fundamental attribution error
+- Improves empathy and understanding
+- Useful in conflict resolution
+
+### Mindfulness and Reflection
+Practices that promote awareness of attribution processes:
+- Reduce automatic biased attributions
+- Encourage more thoughtful explanations
+- Improve interpersonal relationships
+
+Attribution theory provides crucial insights into how we understand social behavior and the consequences of our explanations. Understanding these processes can improve decision-making, relationships, and personal well-being.
+        """,
+        "difficulty_level": "intermediate",
+        "reading_time": 16,
+        "key_concepts": ["internal attribution", "external attribution", "fundamental attribution error", "self-serving bias"],
+        "related_topics": ["Social Cognition", "Cognitive Biases", "Cultural Psychology"],
+        "psychologists": ["Fritz Heider", "Edward Jones", "Harold Kelley", "Bernard Weiner"],
+        "experiments": ["Castro Essay Study", "Quiz Show Study"]
+    },
+    
+    # CLINICAL PSYCHOLOGY
     {
         "title": "Major Depressive Disorder",
         "category": "Clinical Psychology",
@@ -749,6 +1326,554 @@ Major Depressive Disorder remains a significant public health challenge, but wit
         "related_topics": ["Cognitive Behavioral Therapy", "Bipolar Disorder", "Anxiety Disorders"],
         "psychologists": ["Aaron Beck", "Martin Seligman", "Peter Lewinsohn"],
         "experiments": ["Learned Helplessness Studies", "Cognitive Therapy Outcome Studies"]
+    },
+    {
+        "title": "Anxiety Disorders",
+        "category": "Clinical Psychology",
+        "subcategory": "Anxiety and Stress Disorders",
+        "content": """
+# Anxiety Disorders
+
+Anxiety disorders are among the most common mental health conditions, characterized by excessive fear, worry, and avoidance behaviors. They significantly impact daily functioning and quality of life, but are highly treatable with appropriate interventions.
+
+## Types of Anxiety Disorders
+
+### Generalized Anxiety Disorder (GAD)
+
+**Key Features:**
+- Excessive worry about multiple life domains
+- Difficulty controlling worry
+- Occurs more days than not for at least 6 months
+- Significant distress or impairment
+
+**Associated Symptoms:**
+- Restlessness or feeling keyed up
+- Being easily fatigued
+- Difficulty concentrating
+- Irritability
+- Muscle tension
+- Sleep disturbance
+
+### Panic Disorder
+
+**Panic Attacks:**
+Sudden episodes of intense fear with physical symptoms:
+- Palpitations or accelerated heart rate
+- Sweating and trembling
+- Shortness of breath or feelings of choking
+- Chest pain or discomfort
+- Nausea or abdominal distress
+- Dizziness or lightheadedness
+- Derealization or depersonalization
+- Fear of losing control or dying
+- Numbness or tingling
+- Chills or hot flashes
+
+**Panic Disorder Criteria:**
+- Recurrent unexpected panic attacks
+- At least one month of concern about additional attacks
+- Maladaptive changes in behavior related to attacks
+
+### Social Anxiety Disorder (Social Phobia)
+
+**Core Features:**
+- Marked fear of social or performance situations
+- Fear of negative evaluation by others
+- Social situations almost always provoke anxiety
+- Avoidance or endurance with intense distress
+- Impairment in social, occupational, or other functioning
+
+**Common Fears:**
+- Public speaking
+- Meeting new people
+- Eating or drinking in public
+- Using public restrooms
+- Writing in front of others
+
+### Specific Phobias
+
+**Characteristics:**
+- Marked fear of specific objects or situations
+- Immediate anxiety response to phobic stimulus
+- Recognition that fear is excessive (in adults)
+- Avoidance or intense distress
+- Impairment in functioning
+
+**Common Types:**
+- Animal phobias (spiders, snakes, dogs)
+- Natural environment (storms, heights, water)
+- Blood-injection-injury
+- Situational (elevators, flying, enclosed spaces)
+
+### Agoraphobia
+
+**Definition:**
+Fear of being in situations where escape might be difficult or embarrassing, or where help might not be available during a panic attack.
+
+**Common Situations:**
+- Using public transportation
+- Being in open spaces
+- Being in enclosed places
+- Standing in line or being in crowds
+- Being outside of home alone
+
+## Etiology and Risk Factors
+
+### Biological Factors
+
+**Genetics:**
+- Moderate heritability (30-50%)
+- Family clustering of anxiety disorders
+- Shared genetic vulnerabilities across anxiety disorders
+
+**Neurobiology:**
+- Overactive amygdala (fear center)
+- Dysregulation in fear circuitry
+- Neurotransmitter imbalances (GABA, serotonin, norepinephrine)
+- HPA axis dysfunction
+
+**Temperament:**
+- Behavioral inhibition in childhood
+- Negative affectivity and neuroticism
+- Anxiety sensitivity
+
+### Psychological Factors
+
+**Cognitive Factors:**
+- Catastrophic thinking
+- Overestimation of threat
+- Underestimation of coping ability
+- Attention bias toward threat
+
+**Learning Factors:**
+- Classical conditioning (learned fear associations)
+- Vicarious learning (observing others' fears)
+- Information transmission (warnings about dangers)
+- Operant conditioning (avoidance reinforced by anxiety reduction)
+
+### Environmental Factors
+
+**Childhood Experiences:**
+- Overprotective or rejecting parenting
+- Childhood trauma or abuse
+- Early separation experiences
+- Exposure to uncontrollable stressors
+
+**Life Stressors:**
+- Major life changes
+- Chronic stress
+- Medical illness
+- Substance use
+
+## Assessment and Diagnosis
+
+### Clinical Interview
+- Detailed symptom history
+- Onset and course of symptoms
+- Functional impairment assessment
+- Medical and psychiatric history
+- Family history of mental health conditions
+
+### Standardized Measures
+- **Beck Anxiety Inventory (BAI)**
+- **Generalized Anxiety Disorder 7-item (GAD-7)**
+- **Social Phobia Inventory (SPIN)**
+- **Panic Disorder Severity Scale (PDSS)**
+
+### Differential Diagnosis
+Important to distinguish from:
+- Medical conditions (hyperthyroidism, cardiac problems)
+- Substance-induced anxiety
+- Other psychiatric disorders
+- Normal anxiety responses
+
+## Treatment Approaches
+
+### Cognitive Behavioral Therapy (CBT)
+
+**Core Components:**
+- **Psychoeducation**: Understanding anxiety and its symptoms
+- **Cognitive Restructuring**: Identifying and challenging anxious thoughts
+- **Exposure Therapy**: Gradual confrontation of feared situations
+- **Relaxation Training**: Progressive muscle relaxation, deep breathing
+- **Behavioral Experiments**: Testing the validity of catastrophic predictions
+
+**Exposure Techniques:**
+- **In Vivo Exposure**: Real-life confrontation of fears
+- **Imaginal Exposure**: Mental visualization of feared scenarios
+- **Interoceptive Exposure**: Deliberately inducing physical sensations
+- **Virtual Reality Exposure**: Computer-generated environments
+
+### Acceptance and Commitment Therapy (ACT)
+
+**Key Principles:**
+- Acceptance of anxious thoughts and feelings
+- Mindfulness and present-moment awareness
+- Values-based behavior change
+- Psychological flexibility
+
+### Pharmacotherapy
+
+**First-Line Medications:**
+- **SSRIs**: Sertraline, paroxetine, escitalopram
+- **SNRIs**: Venlafaxine, duloxetine
+- Generally well-tolerated with fewer side effects
+
+**Second-Line Options:**
+- **Tricyclic Antidepressants**: Imipramine, clomipramine
+- **MAOIs**: For treatment-resistant cases
+- **Atypical Antidepressants**: Bupropion, mirtazapine
+
+**Benzodiazepines:**
+- **Short-term use only** due to dependence risk
+- Effective for acute anxiety relief
+- Common medications: lorazepam, clonazepam, alprazolam
+- Concerns: tolerance, withdrawal, cognitive impairment
+
+### Combination Treatment
+- CBT plus medication often most effective
+- Addresses both psychological and biological aspects
+- May allow for lower medication doses
+- Reduces relapse rates
+
+## Prognosis and Course
+
+### Natural Course
+- Often chronic without treatment
+- Tends to fluctuate in severity
+- Early onset associated with more chronic course
+- Comorbidity common (depression, substance use)
+
+### Treatment Outcomes
+- CBT effective for 60-80% of patients
+- Medication response rates 50-70%
+- Combination treatment improves outcomes
+- Relapse prevention important
+
+## Prevention and Early Intervention
+
+### Primary Prevention
+- Stress management training
+- Resilience building programs
+- Early childhood interventions
+- Parenting programs to reduce risk factors
+
+### Secondary Prevention
+- Early identification of symptoms
+- School-based anxiety prevention programs
+- Brief interventions for at-risk individuals
+- Screening in primary care settings
+
+## Special Considerations
+
+### Children and Adolescents
+- Developmental considerations in assessment
+- Family involvement in treatment
+- School-based interventions
+- Age-appropriate exposure exercises
+
+### Older Adults
+- Medical comorbidities
+- Medication interactions
+- Late-onset anxiety often related to medical conditions
+- Cognitive changes may affect treatment
+
+### Cultural Factors
+- Cultural expressions of anxiety vary
+- Stigma may affect help-seeking
+- Cultural formulation important
+- Adapt treatments to cultural context
+
+Anxiety disorders are highly treatable conditions with appropriate intervention. Early identification and evidence-based treatment can significantly improve outcomes and quality of life for individuals with these conditions.
+        """,
+        "difficulty_level": "advanced",
+        "reading_time": 22,
+        "key_concepts": ["panic attacks", "GAD", "social anxiety", "phobias", "exposure therapy"],
+        "related_topics": ["Cognitive Behavioral Therapy", "Panic Disorder", "PTSD"],
+        "psychologists": ["Aaron Beck", "David Clark", "David Barlow"],
+        "experiments": ["Little Albert Experiment", "Fear Conditioning Studies"]
+    },
+    
+    # NEUROPSYCHOLOGY
+    {
+        "title": "Neuroplasticity",
+        "category": "Neuropsychology",
+        "subcategory": "Brain Function",
+        "content": """
+# Neuroplasticity
+
+Neuroplasticity, also known as brain plasticity, refers to the brain's remarkable ability to reorganize, adapt, and change throughout life. This fundamental property allows the nervous system to modify its structure and function in response to experience, learning, injury, and environmental demands.
+
+## Types of Neuroplasticity
+
+### Structural Plasticity
+Physical changes in brain anatomy:
+- **Synaptic Plasticity**: Changes in synaptic strength and connections
+- **Dendritic Plasticity**: Growth and pruning of dendritic branches
+- **Axonal Plasticity**: Sprouting of new axonal connections
+- **Neurogenesis**: Birth of new neurons (primarily in hippocampus)
+
+### Functional Plasticity
+Changes in how brain regions function:
+- **Cortical Remapping**: Reassignment of functions to different brain areas
+- **Cross-modal Plasticity**: One sensory modality taking over another's territory
+- **Compensatory Plasticity**: Alternative brain regions compensating for damaged areas
+
+## Mechanisms of Plasticity
+
+### Synaptic Mechanisms
+
+**Long-term Potentiation (LTP)**:
+- Persistent strengthening of synapses
+- Key mechanism for learning and memory
+- "Neurons that fire together, wire together"
+
+**Long-term Depression (LTD)**:
+- Persistent weakening of synapses
+- Important for forgetting and synaptic homeostasis
+- Prevents synaptic saturation
+
+**Spike-timing Dependent Plasticity (STDP)**:
+- Precise timing of pre and postsynaptic activity
+- Determines whether synapses strengthen or weaken
+- Critical for information processing
+
+### Molecular Mechanisms
+
+**Neurotrophic Factors**:
+- **BDNF (Brain-Derived Neurotrophic Factor)**: Promotes neuronal survival and growth
+- **CNTF (Ciliary Neurotrophic Factor)**: Supports neuronal development
+- **NGF (Nerve Growth Factor)**: Essential for neuron maintenance
+
+**Gene Expression Changes**:
+- Activity-dependent gene transcription
+- Immediate early genes (c-fos, c-jun)
+- Protein synthesis for structural changes
+
+### Cellular Mechanisms
+
+**Glial Cell Involvement**:
+- **Astrocytes**: Support synaptic function and plasticity
+- **Microglia**: Synaptic pruning and immune responses
+- **Oligodendrocytes**: Myelination changes
+
+**Epigenetic Modifications**:
+- DNA methylation
+- Histone modifications
+- Non-coding RNA regulation
+
+## Developmental Plasticity
+
+### Critical Periods
+Time windows of heightened plasticity:
+- **Visual System**: First few years of life
+- **Language**: Birth to puberty
+- **Social Skills**: Early childhood
+- **Music**: Early to mid-childhood
+
+### Experience-Expectant Plasticity
+Brain development depends on expected environmental input:
+- Basic sensory and motor systems
+- Requires normal environmental stimulation
+- Leads to permanent deficits if missing
+
+### Experience-Dependent Plasticity
+Brain changes based on individual experiences:
+- Learning-induced modifications
+- Continues throughout life
+- Highly variable between individuals
+
+## Adult Neuroplasticity
+
+### Learning-Induced Changes
+
+**Skill Acquisition**:
+- London taxi drivers: enlarged hippocampus
+- Musicians: expanded motor and auditory cortices
+- Jugglers: increased visual-motor areas
+
+**Cognitive Training**:
+- Working memory training effects
+- Attention training modifications
+- Executive function improvements
+
+### Environmental Enrichment
+
+**Components of Enriched Environments**:
+- Physical activity and exercise
+- Social interaction and stimulation
+- Cognitive challenges and novelty
+- Stress reduction
+
+**Effects on the Brain**:
+- Increased neurogenesis
+- Enhanced synaptic density
+- Improved cognitive function
+- Reduced age-related decline
+
+## Plasticity in Response to Injury
+
+### Stroke Recovery
+
+**Mechanisms of Recovery**:
+- **Diaschisis Resolution**: Recovery of temporarily impaired brain areas
+- **Redundancy**: Parallel pathways taking over function
+- **Compensatory Reorganization**: Alternative brain areas assuming functions
+- **Neurogenesis**: New neurons in some brain regions
+
+**Factors Affecting Recovery**:
+- Age at time of injury
+- Size and location of lesion
+- Time since injury
+- Rehabilitation intensity
+- Environmental factors
+
+### Spinal Cord Injury
+
+**Plasticity Mechanisms**:
+- Sprouting of intact fibers
+- Strengthening of weak connections
+- Circuit reorganization
+- Compensatory strategies
+
+**Rehabilitation Approaches**:
+- Activity-based therapies
+- Electrical stimulation
+- Pharmacological interventions
+- Brain-computer interfaces
+
+## Factors Influencing Plasticity
+
+### Age-Related Changes
+
+**Childhood and Adolescence**:
+- Highest levels of plasticity
+- Extensive synaptic pruning
+- Myelination continues
+- Critical period effects
+
+**Adulthood**:
+- Continued but reduced plasticity
+- Experience-dependent changes
+- Maintenance and optimization
+- Compensatory mechanisms
+
+**Aging**:
+- Decreased but present plasticity
+- Compensatory brain activation
+- Cognitive reserve effects
+- Vulnerability to pathology
+
+### Physical Exercise
+
+**Mechanisms**:
+- Increased BDNF production
+- Enhanced neurogenesis
+- Improved vascular health
+- Reduced inflammation
+
+**Effects**:
+- Better cognitive function
+- Reduced depression and anxiety
+- Slower age-related decline
+- Enhanced memory and learning
+
+### Sleep and Plasticity
+
+**Sleep Functions**:
+- Memory consolidation
+- Synaptic homeostasis
+- Waste clearance
+- Growth hormone release
+
+**Sleep Deprivation Effects**:
+- Impaired plasticity
+- Reduced learning capacity
+- Memory consolidation deficits
+- Cognitive performance decline
+
+## Clinical Applications
+
+### Rehabilitation Medicine
+
+**Principles**:
+- Use-dependent plasticity
+- Task-specific training
+- Intensive practice
+- Progressive challenges
+
+**Techniques**:
+- Constraint-induced movement therapy
+- Functional electrical stimulation
+- Virtual reality training
+- Brain stimulation techniques
+
+### Mental Health Treatment
+
+**Depression and Anxiety**:
+- Antidepressants enhance plasticity
+- Psychotherapy induces brain changes
+- Mindfulness training effects
+- Exercise interventions
+
+**PTSD and Trauma**:
+- Memory reconsolidation
+- Exposure therapy mechanisms
+- Fear extinction learning
+- Stress resilience building
+
+### Educational Implications
+
+**Learning Strategies**:
+- Spaced repetition
+- Interleaved practice
+- Active retrieval
+- Elaborative encoding
+
+**Educational Environment**:
+- Rich, stimulating classrooms
+- Physical activity integration
+- Social learning opportunities
+- Stress reduction techniques
+
+## Future Directions
+
+### Enhancement Techniques
+
+**Brain Stimulation**:
+- Transcranial magnetic stimulation (TMS)
+- Transcranial direct current stimulation (tDCS)
+- Deep brain stimulation (DBS)
+- Optogenetics (experimental)
+
+**Pharmacological Enhancement**:
+- Nootropics and cognitive enhancers
+- BDNF modulators
+- Neurotransmitter enhancers
+- Anti-aging compounds
+
+### Research Frontiers
+
+**Technology Integration**:
+- Brain-computer interfaces
+- Neurofeedback systems
+- Virtual and augmented reality
+- Artificial intelligence applications
+
+**Precision Medicine**:
+- Genetic factors in plasticity
+- Personalized interventions
+- Biomarker development
+- Individual optimization strategies
+
+Neuroplasticity represents one of the most exciting and important discoveries in neuroscience, offering hope for recovery from brain injury, enhancement of learning and memory, and maintenance of cognitive function throughout life. Understanding and harnessing these mechanisms continues to drive innovation in medicine, education, and human enhancement.
+        """,
+        "difficulty_level": "advanced",
+        "reading_time": 20,
+        "key_concepts": ["synaptic plasticity", "LTP", "neurogenesis", "critical periods", "BDNF"],
+        "related_topics": ["Learning and Memory", "Brain Development", "Stroke Recovery"],
+        "psychologists": ["Donald Hebb", "Eric Kandel", "Michael Merzenich"],
+        "experiments": ["Hubel and Wiesel Studies", "London Taxi Driver Study"]
     }
 ]
 
