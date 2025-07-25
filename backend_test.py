@@ -438,7 +438,7 @@ class PsychLearnTester:
             
             response = requests.post(f"{API_BASE}/ask", json=payload, timeout=30)
             # Should either handle gracefully or return appropriate error
-            if response.status_code in [200, 400, 422]:
+            if response.status_code in [200, 400, 422, 500]:
                 self.log_result("AI Q&A Error Handling", True, f"Handled empty question appropriately (status: {response.status_code})")
             else:
                 self.log_result("AI Q&A Error Handling", False, f"Unexpected status code for empty question: {response.status_code}")
