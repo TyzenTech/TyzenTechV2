@@ -165,6 +165,21 @@ backend:
         agent: "testing"
         comment: "TESTED: Environment setup verified. All required API keys present in /app/backend/.env: PUBMED_API_KEY, OSF_API_KEY, GEMINI_API_KEY, and MONGO_URL. Environment variables are properly loaded and accessible to the application. Backend service starts successfully with all configurations."
 
+  - task: "AI Q&A System with Gemini Integration"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Implemented AI-powered Q&A system using Gemini API through emergentintegrations library. Created POST /api/ask endpoint for questions with optional topic context and GET /api/chat-history/{session_id} for conversation history. Includes proper session management and database storage of chat messages."
+      - working: true
+        agent: "testing"
+        comment: "TESTED: AI Q&A system fully functional. POST /api/ask works with both general psychology questions and topic-specific questions using topic_id. Gemini API integration working correctly after fixing API key configuration (changed from EMERGENT_LLM_KEY to GEMINI_API_KEY). Chat history retrieval via GET /api/chat-history/{session_id} works properly. Session management and conversation storage in MongoDB working. Error handling appropriate for invalid inputs. All 6 AI Q&A test cases passing."
+
 frontend:
   - task: "Psychology Learning Platform UI Design"
     implemented: true
