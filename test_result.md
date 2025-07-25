@@ -237,10 +237,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Psychology Topics Database and API Endpoints"
-    - "Advanced Search and Filtering System"
-    - "Database Integration and Models"
-    - "API Environment Setup with External Keys"
+    - "AI Q&A System with Gemini Integration"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
