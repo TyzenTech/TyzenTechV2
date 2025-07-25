@@ -102,8 +102,53 @@ function App() {
       const response = await axios.get(`${API}/topics/${topicId}`);
       setSelectedTopic(response.data);
       setActiveView('topic-detail');
+      // Reset chat when opening a new topic
+      setChatMessages([]);
+      setShowChat(false);
     } catch (error) {
       console.error('Error fetching topic details:', error);
+    }
+  };
+
+  // AI Chat Functions
+  const askQuestion = async (question) => {
+    if (!question.trim()) return;
+    
+    setChatLoading(true);
+    try {
+      const response = await axios.post(`${API}/ask`, {
+        question: question,
+        topic_id: selectedTopic?.id || null,
+        session_id: sessionId
+      });
+      
+      const newMessage = {
+        id: Date.now(),
+        question: question,
+        answer: response.data.answer,
+        timestamp: new Date()
+      };
+      
+      setChatMessages(prev => [...prev, newMessage]);
+      setCurrentQuestion('');
+    } catch (error) {
+      console.error('Error asking question:', error);
+      setChatMessages(prev => [...prev, {
+        id: Date.now(),
+        question: question,
+        answer: 'Sorry, I encountered an error. Please try again.',
+        timestamp: new Date(),
+        error: true
+      }]);
+    } finally {
+      setChatLoading(false);
+    }
+  };
+
+  const handleQuestionSubmit = (e) => {
+    e.preventDefault();
+    if (currentQuestion.trim()) {
+      askQuestion(currentQuestion);
     }
   };
 
