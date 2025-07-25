@@ -16,6 +16,13 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState(null);
   const [activeView, setActiveView] = useState('home'); // 'home', 'topics', 'search', 'topic-detail'
+  
+  // AI Chat state
+  const [chatMessages, setChatMessages] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState('');
+  const [chatLoading, setChatLoading] = useState(false);
+  const [sessionId, setSessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+  const [showChat, setShowChat] = useState(false);
 
   // Fetch initial data
   useEffect(() => {
