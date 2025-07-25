@@ -76,6 +76,25 @@ class UserProgress(BaseModel):
     progress_percentage: int = 0
     last_accessed: datetime = Field(default_factory=datetime.utcnow)
 
+# AI Q&A Models
+class QuestionRequest(BaseModel):
+    question: str
+    topic_id: Optional[str] = None
+    session_id: Optional[str] = Field(default_factory=lambda: str(uuid.uuid4()))
+
+class QuestionResponse(BaseModel):
+    answer: str
+    session_id: str
+    topic_title: Optional[str] = None
+
+class ChatMessage(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    session_id: str
+    topic_id: Optional[str] = None
+    question: str
+    answer: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
 # Sample psychology topics data - Comprehensive database across all psychology fields
 sample_topics = [
     # BEHAVIORAL PSYCHOLOGY
