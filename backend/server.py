@@ -831,9 +831,9 @@ async def search_topics(
         "$or": [
             {"title": {"$regex": q, "$options": "i"}},
             {"content": {"$regex": q, "$options": "i"}},
-            {"key_concepts": {"$in": [{"$regex": q, "$options": "i"}]}},
-            {"psychologists": {"$in": [{"$regex": q, "$options": "i"}]}},
-            {"experiments": {"$in": [{"$regex": q, "$options": "i"}]}}
+            {"key_concepts": {"$regex": q, "$options": "i"}},
+            {"psychologists": {"$regex": q, "$options": "i"}},
+            {"experiments": {"$regex": q, "$options": "i"}}
         ]
     }
     
