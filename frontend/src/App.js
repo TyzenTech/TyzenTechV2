@@ -464,6 +464,97 @@ function App() {
     </section>
   );
 
+  // AI Chat Component
+  const AIChat = () => (
+    <div className="fixed bottom-4 right-4 z-50">
+      {!showChat ? (
+        <button
+          onClick={() => setShowChat(true)}
+          className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg transition-all duration-300 flex items-center space-x-2"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.955 8.955 0 01-4.126-.98L3 21l1.98-5.874A8.955 8.955 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z" />
+          </svg>
+          <span className="hidden md:block">Ask PsychLearn AI</span>
+        </button>
+      ) : (
+        <div className="bg-white rounded-lg shadow-2xl w-96 h-96 flex flex-col">
+          <div className="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+              <span className="font-medium">PsychLearn AI</span>
+            </div>
+            <button
+              onClick={() => setShowChat(false)}
+              className="text-white hover:text-gray-200"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            {chatMessages.length === 0 ? (
+              <div className="text-center text-gray-500 py-8">
+                <svg className="w-12 h-12 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.955 8.955 0 01-4.126-.98L3 21l1.98-5.874A8.955 8.955 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z" />
+                </svg>
+                <p className="text-sm">Ask me anything about psychology!</p>
+                {selectedTopic && (
+                  <p className="text-xs mt-2 text-blue-600">
+                    Currently viewing: {selectedTopic.title}
+                  </p>
+                )}
+              </div>
+            ) : (
+              chatMessages.map(message => (
+                <div key={message.id} className="space-y-2">
+                  <div className="bg-blue-100 p-3 rounded-lg ml-8">
+                    <p className="text-sm font-medium text-gray-900">{message.question}</p>
+                  </div>
+                  <div className={`p-3 rounded-lg mr-8 ${message.error ? 'bg-red-50' : 'bg-gray-50'}`}>
+                    <p className="text-sm text-gray-700 whitespace-pre-wrap">{message.answer}</p>
+                  </div>
+                </div>
+              ))
+            )}
+            {chatLoading && (
+              <div className="bg-gray-50 p-3 rounded-lg mr-8">
+                <div className="flex items-center space-x-2">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                  <p className="text-sm text-gray-500">PsychLearn AI is thinking...</p>
+                </div>
+              </div>
+            )}
+          </div>
+          
+          <div className="p-4 border-t">
+            <form onSubmit={handleQuestionSubmit} className="flex space-x-2">
+              <input
+                type="text"
+                value={currentQuestion}
+                onChange={(e) => setCurrentQuestion(e.target.value)}
+                placeholder="Ask about psychology concepts..."
+                className="flex-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                disabled={chatLoading}
+              />
+              <button
+                type="submit"
+                disabled={chatLoading || !currentQuestion.trim()}
+                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white p-2 rounded-lg transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+
   // Topic Detail Component
   const TopicDetail = () => {
     if (!selectedTopic) return null;
