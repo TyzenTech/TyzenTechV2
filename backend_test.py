@@ -293,7 +293,7 @@ class PsychLearnTester:
                 with open(env_file, 'r') as f:
                     env_content = f.read()
                     
-                required_keys = ["PUBMED_API_KEY", "OSF_API_KEY", "GEMINI_API_KEY", "MONGO_URL"]
+                required_keys = ["PUBMED_API_KEY", "OSF_API_KEY", "GEMINI_API_KEY", "MONGO_URL", "EMERGENT_LLM_KEY"]
                 missing_keys = []
                 
                 for key in required_keys:
@@ -308,6 +308,179 @@ class PsychLearnTester:
                 self.log_result("Environment Variables", False, "Backend .env file not found")
         except Exception as e:
             self.log_result("Environment Variables", False, f"Error checking environment: {str(e)}")
+    
+    def test_ai_qa_general_question(self):
+        """Test AI Q&A with general psychology question"""
+        try:
+            payload = {
+                "question": "What is the difference between classical and operant conditioning?",
+                "session_id": "test-session-general"
+            }
+            
+            response = requests.post(f"{API_BASE}/ask", json=payload, timeout=30)
+            if response.status_code == 200:
+                data = response.json()
+                required_fields = ["answer", "session_id"]
+                missing_fields = [field for field in required_fields if field not in data]
+                
+                if not missing_fields:
+                    answer = data.get("answer", "")
+                    if len(answer) > 50 and ("classical" in answer.lower() or "operant" in answer.lower()):
+                        self.log_result("AI Q&A General Question", True, f"Got relevant answer ({len(answer)} chars)")
+                        return data
+                    else:
+                        self.log_result("AI Q&A General Question", False, f"Answer seems irrelevant or too short: {answer[:100]}...")
+                        return None
+                else:
+                    self.log_result("AI Q&A General Question", False, f"Missing fields: {missing_fields}")
+                    return None
+            else:
+                self.log_result("AI Q&A General Question", False, f"Status code: {response.status_code}")
+                return None
+        except Exception as e:
+            self.log_result("AI Q&A General Question", False, f"Error: {str(e)}")
+            return None
+    
+    def test_ai_qa_topic_specific_question(self, topics: List[Dict]):
+        """Test AI Q&A with topic-specific question"""
+        if not topics:
+            self.log_result("AI Q&A Topic-Specific Question", False, "No topics available for testing")
+            return None
+            
+        try:
+            # Use the first topic for testing
+            topic = topics[0]
+            topic_id = topic.get("id")
+            topic_title = topic.get("title", "")
+            
+            payload = {
+                "question": f"Can you explain the key concepts of {topic_title}?",
+                "topic_id": topic_id,
+                "session_id": "test-session-topic"
+            }
+            
+            response = requests.post(f"{API_BASE}/ask", json=payload, timeout=30)
+            if response.status_code == 200:
+                data = response.json()
+                required_fields = ["answer", "session_id", "topic_title"]
+                missing_fields = [field for field in required_fields if field not in data]
+                
+                if not missing_fields:
+                    answer = data.get("answer", "")
+                    returned_topic_title = data.get("topic_title", "")
+                    
+                    if (len(answer) > 50 and 
+                        returned_topic_title == topic_title and
+                        any(keyword.lower() in answer.lower() for keyword in topic.get("key_concepts", [])[:3])):
+                        self.log_result("AI Q&A Topic-Specific Question", True, f"Got relevant topic-specific answer for '{topic_title}'")
+                        return data
+                    else:
+                        self.log_result("AI Q&A Topic-Specific Question", False, f"Answer doesn't seem topic-specific or relevant")
+                        return None
+                else:
+                    self.log_result("AI Q&A Topic-Specific Question", False, f"Missing fields: {missing_fields}")
+                    return None
+            else:
+                self.log_result("AI Q&A Topic-Specific Question", False, f"Status code: {response.status_code}")
+                return None
+        except Exception as e:
+            self.log_result("AI Q&A Topic-Specific Question", False, f"Error: {str(e)}")
+            return None
+    
+    def test_chat_history_retrieval(self):
+        """Test retrieving chat history for a session"""
+        try:
+            # First, ask a question to create some history
+            payload = {
+                "question": "What is psychology?",
+                "session_id": "test-session-history"
+            }
+            
+            # Send a question first
+            ask_response = requests.post(f"{API_BASE}/ask", json=payload, timeout=30)
+            if ask_response.status_code != 200:
+                self.log_result("Chat History Retrieval", False, "Failed to create chat history for testing")
+                return
+            
+            # Now retrieve the history
+            response = requests.get(f"{API_BASE}/chat-history/test-session-history", timeout=10)
+            if response.status_code == 200:
+                data = response.json()
+                if "messages" in data and isinstance(data["messages"], list):
+                    messages = data["messages"]
+                    if len(messages) > 0:
+                        # Check if the message has the expected structure
+                        first_message = messages[0]
+                        required_fields = ["id", "session_id", "question", "answer", "created_at"]
+                        missing_fields = [field for field in required_fields if field not in first_message]
+                        
+                        if not missing_fields:
+                            self.log_result("Chat History Retrieval", True, f"Retrieved {len(messages)} chat messages")
+                        else:
+                            self.log_result("Chat History Retrieval", False, f"Message missing fields: {missing_fields}")
+                    else:
+                        self.log_result("Chat History Retrieval", False, "No messages found in chat history")
+                else:
+                    self.log_result("Chat History Retrieval", False, "Invalid chat history response format")
+            else:
+                self.log_result("Chat History Retrieval", False, f"Status code: {response.status_code}")
+        except Exception as e:
+            self.log_result("Chat History Retrieval", False, f"Error: {str(e)}")
+    
+    def test_ai_qa_error_handling(self):
+        """Test AI Q&A error handling with invalid requests"""
+        try:
+            # Test with empty question
+            payload = {
+                "question": "",
+                "session_id": "test-session-error"
+            }
+            
+            response = requests.post(f"{API_BASE}/ask", json=payload, timeout=30)
+            # Should either handle gracefully or return appropriate error
+            if response.status_code in [200, 400, 422]:
+                self.log_result("AI Q&A Error Handling", True, f"Handled empty question appropriately (status: {response.status_code})")
+            else:
+                self.log_result("AI Q&A Error Handling", False, f"Unexpected status code for empty question: {response.status_code}")
+        except Exception as e:
+            self.log_result("AI Q&A Error Handling", False, f"Error: {str(e)}")
+    
+    def test_ai_qa_invalid_topic_id(self):
+        """Test AI Q&A with invalid topic_id"""
+        try:
+            payload = {
+                "question": "What is this topic about?",
+                "topic_id": "invalid-topic-id-12345",
+                "session_id": "test-session-invalid-topic"
+            }
+            
+            response = requests.post(f"{API_BASE}/ask", json=payload, timeout=30)
+            if response.status_code == 200:
+                data = response.json()
+                # Should still work but without topic context
+                if "answer" in data and data.get("topic_title") is None:
+                    self.log_result("AI Q&A Invalid Topic ID", True, "Handled invalid topic_id gracefully")
+                else:
+                    self.log_result("AI Q&A Invalid Topic ID", False, "Didn't handle invalid topic_id properly")
+            else:
+                self.log_result("AI Q&A Invalid Topic ID", False, f"Status code: {response.status_code}")
+        except Exception as e:
+            self.log_result("AI Q&A Invalid Topic ID", False, f"Error: {str(e)}")
+    
+    def test_chat_history_nonexistent_session(self):
+        """Test retrieving chat history for non-existent session"""
+        try:
+            response = requests.get(f"{API_BASE}/chat-history/nonexistent-session-12345", timeout=10)
+            if response.status_code == 200:
+                data = response.json()
+                if "messages" in data and isinstance(data["messages"], list) and len(data["messages"]) == 0:
+                    self.log_result("Chat History Non-existent Session", True, "Returned empty messages for non-existent session")
+                else:
+                    self.log_result("Chat History Non-existent Session", False, "Unexpected response for non-existent session")
+            else:
+                self.log_result("Chat History Non-existent Session", False, f"Status code: {response.status_code}")
+        except Exception as e:
+            self.log_result("Chat History Non-existent Session", False, f"Error: {str(e)}")
     
     def run_all_tests(self):
         """Run all backend tests"""
