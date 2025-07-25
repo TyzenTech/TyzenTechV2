@@ -733,6 +733,9 @@ function App() {
       {activeView === 'topic-detail' && <TopicDetail />}
       
       <Footer />
+      
+      {/* AI Chat - Show only on topic-detail page */}
+      {activeView === 'topic-detail' && <AIChat />}
     </div>
   );
 }
