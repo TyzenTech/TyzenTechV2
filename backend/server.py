@@ -793,7 +793,7 @@ async def get_topics(
         filter_query["$or"] = [
             {"title": {"$regex": search, "$options": "i"}},
             {"content": {"$regex": search, "$options": "i"}},
-            {"key_concepts": {"$in": [{"$regex": search, "$options": "i"}]}}
+            {"key_concepts": {"$regex": search, "$options": "i"}}
         ]
     
     topics = await db.psychology_topics.find(filter_query).limit(limit).to_list(limit)
