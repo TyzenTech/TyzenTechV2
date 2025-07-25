@@ -2068,7 +2068,7 @@ Remember: You are here to help students learn psychology effectively."""
 
         # Initialize the Gemini chat
         chat = LlmChat(
-            api_key=os.environ.get('EMERGENT_LLM_KEY'),
+            api_key=os.environ.get('GEMINI_API_KEY'),
             session_id=request.session_id,
             system_message=system_message
         ).with_model("gemini", "gemini-2.0-flash").with_max_tokens(1000)
